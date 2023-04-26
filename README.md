@@ -19,7 +19,7 @@ When using Meet Me Out, users can:
 - HTML and CSS
 tbc
 
-#Use of Serverless Functions
+# Use of Serverless Functions
 Meet Me Out uses serverless functions and as such, only authorized users will have access to view the events from the Google Calendar API. This access is granted through a token. The authorization server, AWS Lambda, is the platform where the serverless functions responsible for providing authorization tokens to users are hosted.
 
 # Link
