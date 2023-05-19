@@ -18,6 +18,11 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.start')).toHaveLength(1);
     expect(EventWrapper.find('.start').text()).toBe(event.start.dateTime);
   })
+  test('render location details', () => {
+    expect(EventWrapper.find('.location')).toHaveLength(1);
+    expect(EventWrapper.find('.location').text()).toBe(event.location);
+  })
+
 
 
   })
