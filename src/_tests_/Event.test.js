@@ -14,7 +14,13 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.summary')).toHaveLength(1); 
     expect(EventWrapper.find('.summary').text()).toBe(event.summary);
   })
+  test('render start details', () => {
+    expect(EventWrapper.find('.start')).toHaveLength(1);
+    expect(EventWrapper.find('.start').text()).toBe(event.start.dateTime);
+  })
 
+
+  })
 
 
 });
