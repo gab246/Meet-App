@@ -23,6 +23,17 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.location').text()).toBe(event.location);
   })
 
+  test('renders show details button when details are collapsed', () => {
+    expect(EventWrapper.find('.detailsButton')).toHaveLength(1);
+    expect(EventWrapper.find('.detailsButton').text()).toBe('Show Details')
+    
+})
+
+  test('renders collapsed state (default)', () => {
+    expect(EventWrapper.state('hide')).toBe(true);
+})
+
+
 
 
   })
