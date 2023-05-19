@@ -43,7 +43,24 @@ test('expand details when clicking detailsButton', () => {
   expect(EventWrapper.state('hide')).toBe(false);
 })
 
+test('collapse details when clicking detailsButton', () => {
+  EventWrapper.setState({ hide: false });
+  expect(EventWrapper.find('.detailsButton')).toHaveLength(1);
+  expect(EventWrapper.find('.detailsButton').text()).toBe('Hide Details');
 
+  expect(EventWrapper.find('.aboutTitle')).toHaveLength(1);
+  expect(EventWrapper.find('.aboutTitle').text()).toBe('About Event:');
+
+  expect(EventWrapper.find('.eventLink')).toHaveLength(1);
+  expect(EventWrapper.find('.eventLink').text()).toBe('See Event in Google Calendar');
+  expect(EventWrapper.find('.eventLink').prop('href')).toBe(event.htmlLink);
+
+  expect(EventWrapper.find('.description')).toHaveLength(1);
+  expect(EventWrapper.find('.description').text()).toBe(event.description);
+
+  const detailsButton = EventWrapper.find('.detailsButton');
+  detailsButton.simulate('click');
+  expect(EventWrapper.state('hide')).toBe(true);
 
   })
 
