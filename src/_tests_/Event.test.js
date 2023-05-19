@@ -33,6 +33,15 @@ describe('<Event /> component', () => {
     expect(EventWrapper.state('hide')).toBe(true);
 })
 
+test('expand details when clicking detailsButton', () => {
+  const detailsButton = EventWrapper.find('.detailsButton');
+  expect(detailsButton.text()).toBe('Show Details');
+  expect(EventWrapper.find('aboutTitle')).toHaveLength(0);
+  expect(EventWrapper.find('eventLink')).toHaveLength(0);
+  expect(EventWrapper.find('description')).toHaveLength(0);
+  detailsButton.simulate('click');
+  expect(EventWrapper.state('hide')).toBe(false);
+})
 
 
 
