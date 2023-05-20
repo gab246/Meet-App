@@ -18,6 +18,12 @@ test('check default number is 32', () => {
   expect(NumberOfEventsWrapper.find('.eventNumber').prop('value')).toBe(number);
 });
 
+test('eventNumber input changes', () => {
+  NumberOfEventsWrapper.setState({ eventCount: 32})
+  const number = { target: {value: 15 }};
+  NumberOfEventsWrapper.find('.eventNumber').simulate('change', number);
+  expect(NumberOfEventsWrapper.state('eventCount')).toBe(15);
+});
 
 })
 
