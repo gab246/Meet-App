@@ -13,5 +13,11 @@ test('renders container for NumberOfEvents', () => {
   expect(NumberOfEventsWrapper.find('.container')).toHaveLength(1);
 });
 
+test('check default number is 32', () => {
+  const number = NumberOfEventsWrapper.state('eventCount');
+  expect(NumberOfEventsWrapper.find('.eventNumber').prop('value')).toBe(number);
+});
+
+
 })
 
