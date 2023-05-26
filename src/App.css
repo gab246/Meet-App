@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+body {
+background-color: #ffffff;
+}
+
+
 ul {
   padding: 0;
   list-style: none;
@@ -29,8 +34,8 @@ input[type="number"] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
-  border: 1px solid #ccc;
-  font-size: 14px;
+  border: 2px solid #d6a3a3;
+  font-size: 16px;
   line-height: 20px;
   align-self: center;
   height: 38px;
@@ -46,8 +51,19 @@ input[type="number"] {
   flex-basis: 300px;
   max-width: 300px;
   margin: auto;
-  margin-bottom: 60px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   position: relative;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 40px;
+}
+
+.summary {
+  text-transform: uppercase;
+  font-size: 25px;
+  color: #777474;
+  margin-top: 30px;
+  margin-bottom: 25px;
 }
 
 .suggestions {
@@ -59,6 +75,7 @@ input[type="number"] {
   top: 43px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .suggestions > li {
@@ -74,26 +91,53 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #bcdcdb;
+  background-color: #e6eeee;
+}
+
+.aboutTitle {
+font-family: Georgia, Times, serif;
+color: #cfa3a3;
+}
+
+.eventLink {
+  color: #777474;
+  letter-spacing: 4px;
 }
 
 .event {
   padding: 10px 10px 35px;
-  margin-bottom: 10px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin-bottom: 70px;
+  text-align: center;
+  border: 2px solid #f3dddd;
+  border-radius: 10px;
   position: relative;
+  background-color: #fbfbf2;
 }
 
-.details-btn {
-  position: absolute;
+.EventList {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  
+}
+  
+.detailsButton {
+  position: center;
   right: 5px;
   bottom: 5px;
-  padding: 5px 8px;
-  border-radius: 4px;
+  padding: 8px 13px;
+  border-radius: 9px;
   outline: none;
   cursor: pointer;
+  border-color: #be9e9e;
+  font-size: 15px;;
+  font-family: monospace;
+  letter-spacing: 6px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-color: #f7ecec;
+  color: #646060;
 }
 
 .name {
@@ -113,6 +157,10 @@ input[type="number"] {
 
 .description {
   overflow-x: hidden;
+  font-family: sans-serif;
+  font-size: 22px;
+  padding-top: 45px;
+  font-family: Georgia, Times, serif;
 }
 
 .numberOfEvents {
@@ -129,6 +177,12 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
+.container {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
 .Alert {
   position: fixed;
   top: 20px;
@@ -139,10 +193,12 @@ input[type="number"] {
   align-items: center;
   flex-direction: column;
 }
+
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;
   display: flex;
 }
+
 .recharts-surface {
   overflow: visible;
 }
