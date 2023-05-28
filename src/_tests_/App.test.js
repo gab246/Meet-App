@@ -66,5 +66,15 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
+  test('get list with number of event items matching the number input', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventCount = Math.floor(Math.random() * 32)
+    const event = { target: { value: eventCount }};
+    await NumberOfEventsWrapper.instance().hanldeChange(event);
+    AppWrapper.update();
+    expect(AppWrapper.find(EventList).find('li')).toHaveLength(eventCount);
+    AppWrapper.unmount();
+  })
   });
  });
