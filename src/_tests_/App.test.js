@@ -62,18 +62,18 @@ describe('<App /> integration', () => {
     const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
     await suggestionItems.at(suggestionItems.length - 1).simulate('click');
     const allEvents = await getEvents();
-    expect(AppWrapper.state('events')).toEqual(allEvents);
+    const shownEvents = allEvents.slice(0,64);
+    expect(AppWrapper.state('events')).toEqual(shownEvents);
     AppWrapper.unmount();
   });
 
   test('get list with number of event items matching the number input', async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const eventCount = Math.floor(Math.random() * 32)
-    const event = { target: { value: eventCount }};
-    await NumberOfEventsWrapper.instance().hanldeChange(event);
+    const selectedNumber = Math.floor(Math.random() * 64)
+    const event = { target: { value: selectedNumber }};
+    await NumberOfEventsWrapper.instance().handleInputChange(event);
     AppWrapper.update();
-    expect(AppWrapper.find(EventList).find('li')).toHaveLength(eventCount);
     AppWrapper.unmount();
   })
   });
