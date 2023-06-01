@@ -12,13 +12,14 @@ class App extends Component {
     events: [],
     locations: [],
     location: 'all',
-    numberOfEvents: 32
+    numberOfEvents: 64
   }
 
 componentDidMount() {
       this.mounted = true;
       getEvents().then((events) => {
         if (this.mounted) {
+         events = events.slice(0,64)
         this.setState({ 
           events,
           locations: extractLocations(events) });
@@ -49,7 +50,7 @@ componentDidMount() {
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
         <NumberOfEvents updateEvents={this.updateEvents}/>
         <EventList events={this.state.events}/>
-        
+      
       </div>
     );
   }
