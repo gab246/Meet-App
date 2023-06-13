@@ -25,6 +25,7 @@ p {
 .display-none {
   display: none;
 }
+
 .showSuggestions {
   display: block;
 }
@@ -76,6 +77,7 @@ input[type="number"] {
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
   font-family: 'Courier New', Courier, monospace;
+  top: 130px;
 }
 
 .suggestions > li {
@@ -180,8 +182,8 @@ color: #cfa3a3;
 .numberOfEvents-container {
   font-family:'Courier New', Courier, monospace;
   font-size: 40px;
-  margin-bottom: 75px;
-  margin-top: 105px;
+  margin-bottom: 100px;
+  margin-top: 170px;
 }
 
 .Alert {
