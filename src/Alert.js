@@ -44,6 +44,13 @@ class Alert extends Component {
     }
   }
 
+  class WarningAlert extends Alert {
+    constructor(props) {
+      super(props);
+      this.color = '#FFB347';
+      this.marginTop = '20px'
+    }
+  }
 
-export { InfoAlert }
-export { ErrorAlert }
+
+export { InfoAlert, WarningAlert, ErrorAlert }
