@@ -32,7 +32,8 @@ export const getEvents = async () => {
 
   if(token){
     removeQuery();
-    const url = 'https://afif1yos6d.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + token;
+    const url = 'https://afif1yos6d.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + 
+    '/' + token;
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
@@ -83,7 +84,8 @@ const getToken = async (code) => {
   try {
       const encodeCode = encodeURIComponent(code);
 
-      const response = await fetch('https://afif1yos6d.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode);
+      const response = await fetch('https://afif1yos6d.execute-api.eu-central-1.amazonaws.com/dev/api/token' 
+      + '/' + encodeCode);
       if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
       }
