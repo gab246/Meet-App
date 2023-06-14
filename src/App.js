@@ -57,7 +57,7 @@ componentDidMount() {
   render() {
     return (
       <div className="App">
-        <WarningAlert text={this.state.offlineAlert} />
+        <WarningAlert text={this.state.warningAlert} />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
         <NumberOfEvents updateEvents={this.updateEvents}/>
         <EventList events={this.state.events}/>
