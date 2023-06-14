@@ -31,7 +31,7 @@ componentDidMount() {
       this.mounted = false;
     }
 
-    offlineAlert() {
+    offlineAlert = () => {
       if(!navigator.onLine) {
         this.setState({
           warningAlert: 'You are now offline. The events may not be up to date',
