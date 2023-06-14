@@ -2,14 +2,27 @@ import axios from 'axios';
 import { mockData } from './mock-data';
 import NProgress from 'nprogress';
 
-//function takes an events array, uses map to create new array (only location)
-// creating new array using spread operator and spread reading a Set
-//Set removes duplicates from array
-export const extractLocations = (events) => {
-  var extractLocations = events.map((event) => event.location);
-  var locations = [ ...new Set(extractLocations)];
-  return locations;
-};
+
+
+export const getAccessToken = async () => {
+  const accessToken = localStorage.getItem('access_token');
+  const tokenCheck = accessToken && (await checkToken(accessToken));
+  if(!accessToken || tokenCheck.error) {
+    await localStorage.removeItem('access_token');
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = await searchParams.get('code');
+    if (!code) {
+      const results = await axios.get(
+        'https://afif1yos6d.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url'
+      );
+      const { authUrl } = results.data;
+      return (window.location.href = authUrl);
+    }
+    return code && getToken(code);
+  }
+  return accessToken;
+}
+
 
 const checkToken = async (accessToken) => {
   const result = await fetch(
@@ -45,24 +58,6 @@ export const getEvents = async () => {
   }
 };
 
-export const getAccessToken = async () => {
-  const accessToken = localStorage.getItem('access_token');
-  const tokenCheck = accessToken && (await checkToken(accessToken));
-  if(!accessToken || tokenCheck.error) {
-    await localStorage.removeItem('access_token');
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = await searchParams.get('code');
-    if (!code) {
-      const results = await axios.get(
-        'https://afif1yos6d.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url'
-      );
-      const { authUrl } = results.data;
-      return (window.location.href = authUrl);
-    }
-    return code && getToken(code);
-  }
-  return accessToken;
-}
 
 //checks if there is path, then builds URL with current path or without path using window.history.pushState
 const removeQuery = () => {
@@ -96,3 +91,12 @@ const getToken = async (code) => {
       error.json();
   }
 }
+
+//function takes an events array, uses map to create new array (only location)
+// creating new array using spread operator and spread reading a Set
+//Set removes duplicates from array
+export const extractLocations = (events) => {
+  var extractLocations = events.map((event) => event.location);
+  var locations = [ ...new Set(extractLocations)];
+  return locations;
+};
