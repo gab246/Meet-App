@@ -13,7 +13,8 @@ class App extends Component {
     events: [],
     locations: [],
     location: 'all',
-    numberOfEvents: 64
+    numberOfEvents: 64,
+    warningAlert: ''
   }
 
 componentDidMount() {
@@ -34,7 +35,7 @@ componentDidMount() {
     offlineAlert = () => {
       if(!navigator.onLine) {
         this.setState({
-          warningAlert: 'You are now offline. The events may not be up to date',
+          warningAlert: 'You are now offline. The events may not be up to date'
         });
       }
     };
