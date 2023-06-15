@@ -32,15 +32,6 @@ componentDidMount() {
       this.mounted = false;
     }
 
-    offlineAlert = () => {
-      if(!navigator.onLine) {
-        this.setState({
-          warningAlert: 'You are now offline. The events may not be up to date'
-        });
-      }
-    };
-
-
   updateEvents = (location, eventCount) => {
     if (location) this.setState({ location });
     if (eventCount) this.setState({ numberOfEvents: eventCount });
@@ -57,7 +48,7 @@ componentDidMount() {
   render() {
     return (
       <div className="App">
-        <WarningAlert text={this.state.warningAlert} />
+        {!navigator.onLine ? <WarningAlert text={'You are now offline. The events may not be up to date.'} /> :null}
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
         <NumberOfEvents updateEvents={this.updateEvents}/>
         <EventList events={this.state.events}/>
