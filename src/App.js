@@ -29,9 +29,10 @@ async componentDidMount() {
         if ((code || isTokenValid) && this.mounted) {
           getEvents().then((events) => {
         if (this.mounted) {
-          events = events.slice(0,62)
-          this.setState({ events, locations: extractLocations(events) });
-        }
+          this.setState({ 
+            events, 
+            locations: extractLocations(events) });
+          }
       });
     }
   }
