@@ -29,7 +29,7 @@ async componentDidMount() {
         if ((code || isTokenValid) && this.mounted) {
           getEvents().then((events) => {
         if (this.mounted) {
-          events = events.slice(0,64)
+          events = events.slice(0, 64);
           this.setState({ 
             events, 
             locations: extractLocations(events) });
