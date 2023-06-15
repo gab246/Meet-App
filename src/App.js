@@ -28,8 +28,8 @@ async componentDidMount() {
       this.setState({ showWelcomeScreen: !(code || isTokenValid) });
         if ((code || isTokenValid) && this.mounted) {
           getEvents().then((events) => {
+            events = events.slice(0, 64);
         if (this.mounted) {
-          events = events.slice(0, 64);
           this.setState({ 
             events, 
             locations: extractLocations(events) });
