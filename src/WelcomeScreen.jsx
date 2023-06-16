@@ -5,10 +5,7 @@ function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
     <div className="WelcomeScreen">
       <h1>Welcome to the Meet App</h1>
-      <h4>
-        {" "}
-        See upcoming events around the world for full-stack developers
-      </h4>
+      <h4> See upcoming events around the world for full-stack developers</h4>
       <div className="button_cont" align="center">
         <div class="google-btn">
           <div class="google-icon-wrapper">
@@ -25,16 +22,16 @@ function WelcomeScreen(props) {
             rel="nofollow noopener"
             class="btn-text"
           >
-            <b>Sign in with google</b>
+            <b>Sign in with Google</b>
           </button>
         </div>
       </div>
 
       <a
-        href="https://gab246.github.io/meet/privacy.html"
+        href="https://gab246.github.io/meet-app/privacy.html"
         rel="nofollow noopener"
       >
-        Privacy policy
+        Privacy Policy
       </a>
     </div>
   ) : null;
