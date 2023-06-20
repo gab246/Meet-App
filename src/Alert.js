@@ -32,7 +32,7 @@ class Alert extends Component {
     constructor(props) {
       super(props);
       this.color = '#6EB7D6';
-      this.marginTop = '330px';
+      this.marginTop = '447px';
     }
   }
 
@@ -40,7 +40,7 @@ class Alert extends Component {
     constructor(props) {
       super(props);
       this.color = '#ff6961';
-      this.marginTop = '560px'
+      this.marginTop = '677px'
     }
   }
 
