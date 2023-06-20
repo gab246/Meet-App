@@ -15,6 +15,13 @@ background-color: #ffffff;
 .title {
   font-size: 70px;
   font-family:'Courier', monospace;
+  letter-spacing: 8px;
+  color: #dfc2c2; 
+}
+
+.chartTitle {
+font-size: 40px;
+font-family: 'Courier New', Courier, monospace;
 }
 
 ul {
