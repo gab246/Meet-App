@@ -8,6 +8,7 @@ import './App.css';
 import './nprogress.css';
 import { WarningAlert } from './Alert'
 import WelcomeScreen from './WelcomeScreen';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 class App extends Component {
   state = {
@@ -55,19 +56,50 @@ async componentDidMount() {
     });
   }
 
+  //number of events in each cityπ
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => events.location === location).length
+      const city = location.split(', ').shift()
+      return {city, number};
+    })
+    return data;
+  }
+
   render() {
-    if (this.state.showWelcomeScreen === undefined) return <div className='App' />
+    if (this.state.showWelcomeScreen === undefined) return <div className='App' />;
     return (
-      <div className="App">
-        {!navigator.onLine ? <WarningAlert text={'You are now offline. The events may not be up to date.'} /> :null}
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
-        <NumberOfEvents updateEvents={this.updateEvents}/>
+      <div className='App'>
+          <h1>Meet App</h1>
+          <h4>Choose your nearest City</h4>
+            <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} /> 
+            <NumberOfEvents updateEvents={this.updateEvents}/>
+
+          <h4>Events in Each City</h4>
+            <ScatterChart
+              width={800}
+              height={400}
+              margin={{
+                top: 20, right: 20, bottom: 20, left: 20,
+              }}
+            >
+              <CartesianGrid />
+                <XAxis type='category' dataKey='city' name='City' />
+                <YAxis type='number' dataKey='number' name='Number Of Events' allowDecimals={false} />
+                <Tooltip cursor={{ strokeDasharray: '3 3'}} />
+                <Scatter  data={this.getData()} fill='#8884d8' />
+            </ScatterChart>
         <EventList events={this.state.events}/>
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
+          {!navigator.onLine ? <WarningAlert text={'You are now offline. The events may not be up to date.'} /> :null}
       </div>
     );
   }
 }
+
+
+  
 
 export default App;
