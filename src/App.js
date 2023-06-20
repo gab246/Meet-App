@@ -17,7 +17,7 @@ class App extends Component {
     location: 'all',
     numberOfEvents: 64,
     warningAlert: '',
-    showWelcomeScreen: undefined
+    showWelcomeScreen: undefined,
   }
 
 async componentDidMount() {
@@ -56,44 +56,47 @@ async componentDidMount() {
     });
   }
 
-  //number of events in each cityπ
+  //number of events in each city for graph
   getData = () => {
     const { locations, events } = this.state;
     const data = locations.map((location) => {
-      const number = events.filter((event) => events.location === location).length
-      const city = location.split(', ').shift()
+      const number = events.filter((event) => events.location === location).length;
+      const city = location.split(', ').shift();
+
       return {city, number};
-    })
+    });
     return data;
-  }
+  };
 
   render() {
-    const { location, numberOfEvents, events } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div className='App' />;
+  
     return (
       <div className='App'>
+        {!navigator.onLine ? <WarningAlert text={'You are now offline. The events may not be up to date.'} /> :null}
           <h1 className='title'>Meet App</h1>
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} /> 
             <NumberOfEvents updateEvents={this.updateEvents}/>
-
-          <h4 className='chartTitle'>Events in Each City</h4>
+          
+          <div className='chartTitle'>Events in each City</div>
           <ResponsiveContainer height={400} >
             <ScatterChart
               margin={{
-                top: 20, right: 20, bottom: 20, left: 20,
-              }}
-            >
-              <CartesianGrid />
-                <XAxis type='category' dataKey='city' name='City' />
-                <YAxis type='number' dataKey='number' name='Number Of Events' allowDecimals={false} />
-                <Tooltip cursor={{ strokeDasharray: '3 3'}} />
-                <Scatter  data={this.getData()} fill='#8884d8' />
+                top: 40, right: 40, bottom: 40, left: 40,
+              }}>
+
+            <CartesianGrid />
+              <XAxis type='category' dataKey='city' name='City' />
+              <YAxis type='number' dataKey='number' name='Number Of Events' allowDecimals={false} />
+              <Tooltip cursor={{ strokeDasharray: '3 3'}} />
+              <Scatter  data={this.getData()} fill='#8884d8' />
             </ScatterChart>
           </ResponsiveContainer>
         <EventList events={this.state.events}/>
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
-          {!navigator.onLine ? <WarningAlert text={'You are now offline. The events may not be up to date.'} /> :null}
+
+       
       </div>
     );
   }
