@@ -60,7 +60,7 @@ async componentDidMount() {
   getData = () => {
     const { locations, events } = this.state;
     const data = locations.map((location) => {
-      const number = events.filter((event) => events.location === location).length;
+      const number = events.filter((event) => event.location === location).length;
       const city = location.split(', ').shift();
 
       return {city, number};
@@ -70,7 +70,7 @@ async componentDidMount() {
 
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className='App' />;
-  
+    
     return (
       <div className='App'>
         {!navigator.onLine ? <WarningAlert text={'You are now offline. The events may not be up to date.'} /> :null}
