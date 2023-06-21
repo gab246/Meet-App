@@ -15,7 +15,7 @@ class App extends Component {
     events: [],
     locations: [],
     location: 'all',
-    numberOfEvents: 64,
+    numberOfEvents: 32,
     warningAlert: '',
     showWelcomeScreen: undefined,
   }
@@ -29,7 +29,7 @@ async componentDidMount() {
       this.setState({ showWelcomeScreen: !(code || isTokenValid) });
         if ((code || isTokenValid) && this.mounted) {
           getEvents().then((events) => {
-            events = events.slice(0, 64);
+            events = events.slice(0, 32);
         if (this.mounted) {
           this.setState({ 
             events, 

@@ -12,7 +12,7 @@ defineFeature(feature, test => {
   let NumberOfEventsWrapper;
 	NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => { }} /> );
 
-test('When user hasn’t specified a number, 64 is the default number', ({ given, when, then }) => {
+test('When user hasn’t specified a number, 32 is the default number', ({ given, when, then }) => {
     	given('the user has a list of events', () => {
         AppWrapper = mount(<App />);
     	});
@@ -22,8 +22,8 @@ test('When user hasn’t specified a number, 64 is the default number', ({ given
 
     	then(/^user is shown the default number of (\d+)$/, (arg0) => {
 				expect(AppWrapper.state('eventCount')).toBeUndefined(); 
-				AppWrapper.setState({ eventCount: 64 });
-				expect(AppWrapper.state('eventCount')).toBe(64); 
+				AppWrapper.setState({ eventCount: 32 });
+				expect(AppWrapper.state('eventCount')).toBe(32); 
     	});
     });
 

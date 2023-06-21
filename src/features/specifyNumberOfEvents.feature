@@ -1,10 +1,10 @@
 
 Feature: As a user, I should be able to specify the number of events I can see so I can see more or less events in the list.
 
-Scenario: When user hasn’t specified a number, 64 is the default number
+Scenario: When user hasn’t specified a number, 32 is the default number
 Given the user has a list of events 
 When user has not specified a number of events
-Then user is shown the default number of 64
+Then user is shown the default number of 32
 
 
 Scenario: User can change the number of events they want to see 
