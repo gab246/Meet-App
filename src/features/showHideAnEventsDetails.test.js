@@ -18,13 +18,13 @@ defineFeature(feature, test => {
 
     when('the user has a list of events', () => {
       AppWrapper.update();
-      expect(AppWrapper.find('.event')).toHaveLength(64);
+      expect(AppWrapper.find('.event')).toHaveLength(32);
     });
 
 
     then('the event details are not visible to the user', () => {
       AppWrapper.update();
-      expect(AppWrapper.find('.event')).toHaveLength(64);
+      expect(AppWrapper.find('.event')).toHaveLength(32);
 
     });
   });
