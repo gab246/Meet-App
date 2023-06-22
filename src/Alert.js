@@ -1,3 +1,4 @@
+import { getPositioningCSS } from 'nprogress';
 import React, { Component } from 'react';
 
 class Alert extends Component {
@@ -19,7 +20,7 @@ class Alert extends Component {
 
   render() {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', position: 'fixed' }}>
       <div className="Alert">
         <p style={this.getStyle()}>{this.props.text}</p>
       </div>
@@ -32,7 +33,7 @@ class Alert extends Component {
     constructor(props) {
       super(props);
       this.color = '#6EB7D6';
-      this.marginTop = '447px';
+      this.marginTop = '455px';
     }
   }
 
@@ -40,7 +41,7 @@ class Alert extends Component {
     constructor(props) {
       super(props);
       this.color = '#ff6961';
-      this.marginTop = '677px'
+      this.marginTop = '686px'
     }
   }
 
