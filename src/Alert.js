@@ -20,7 +20,7 @@ class Alert extends Component {
 
   render() {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', position: 'fixed' }}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div className="Alert">
         <p style={this.getStyle()}>{this.props.text}</p>
       </div>
@@ -33,7 +33,7 @@ class Alert extends Component {
     constructor(props) {
       super(props);
       this.color = '#6EB7D6';
-      this.marginTop = '455px';
+      this.marginTop = '459px';
     }
   }
 
@@ -41,7 +41,7 @@ class Alert extends Component {
     constructor(props) {
       super(props);
       this.color = '#ff6961';
-      this.marginTop = '686px'
+      this.marginTop = '689px'
     }
   }
 
