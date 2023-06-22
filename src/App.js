@@ -80,8 +80,8 @@ async componentDidMount() {
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} /> 
             <NumberOfEvents updateEvents={this.updateEvents}/>
           
-          <div className='data-vis-wrapper'>
           <div className='chartTitle'>Events in each City</div>
+          <div className='data-vis-wrapper'>
             <EventGenre events={events} />
             <ResponsiveContainer height={400} >
               <ScatterChart
