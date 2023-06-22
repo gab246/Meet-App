@@ -9,6 +9,7 @@ import './nprogress.css';
 import { WarningAlert } from './Alert'
 import WelcomeScreen from './WelcomeScreen';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import EventGenre from './EventGenre';
 
 class App extends Component {
   state = {
@@ -70,6 +71,7 @@ async componentDidMount() {
 
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className='App' />;
+    const { events } = this.state
     
     return (
       <div className='App'>
@@ -78,12 +80,14 @@ async componentDidMount() {
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} /> 
             <NumberOfEvents updateEvents={this.updateEvents}/>
           
+          <div className='data-vis-wrapper'>
           <div className='chartTitle'>Events in each City</div>
-          <ResponsiveContainer height={400} >
-            <ScatterChart
-              margin={{
-                top: 40, right: 40, bottom: 40, left: 40,
-              }}>
+            <EventGenre events={events} />
+            <ResponsiveContainer height={400} >
+              <ScatterChart
+                margin={{
+                  top: 40, right: 40, bottom: 40, left: 40,
+                }}>
 
             <CartesianGrid />
               <XAxis type='category' dataKey='city' name='City' />
@@ -92,9 +96,10 @@ async componentDidMount() {
               <Scatter  data={this.getData()} fill='#8884d8' />
             </ScatterChart>
           </ResponsiveContainer>
-        <EventList events={this.state.events}/>
-        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => { getAccessToken() }} />
+        </div>
+          <EventList events={this.state.events}/>
+          <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+            getAccessToken={() => { getAccessToken() }} />
 
        
       </div>
