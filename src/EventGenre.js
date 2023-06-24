@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 
 const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
@@ -23,6 +23,7 @@ const EventGenre = ({ events }) => {
   return (
     <ResponsiveContainer height={400} >
       <PieChart width={400} height={400}>
+        <Legend align='center' />
         <Pie
           data={data}
           cx={200}
