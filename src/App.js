@@ -82,10 +82,8 @@ async componentDidMount() {
           
           <div className='chartTitle'>Events in each City</div>
           <div className='data-vis-wrapper'>
-            <div>
             <EventGenre events={events} />
-            </div>
-          <ResponsiveContainer height={400} >
+            <ResponsiveContainer height={400} >
               <ScatterChart
                 margin={{
                   top: 40, right: 40, bottom: 40, left: 40,
